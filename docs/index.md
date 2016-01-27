@@ -846,8 +846,8 @@ Percentage of the requests served within a certain time (ms)
 - Træfɪk:
 
 ```sh
-$ docker run -d -l traefik.backend=test1 -l traefik.host=test1 emilevauge/whoami
-$ docker run -d -l traefik.backend=test1 -l traefik.host=test1 emilevauge/whoami
+$ docker run -d -l traefik.backend=test1 -l traefik.frontend.rule=Host -l traefik.frontend.value=test1.docker.localhost emilevauge/whoami
+$ docker run -d -l traefik.backend=test1 -l traefik.frontend.rule=Host -l traefik.frontend.value=test1.docker.localhost emilevauge/whoami
 docker run -d -p 8080:8080 -p 80:80 -v $PWD/traefik.toml:/traefik.toml -v /var/run/docker.sock:/var/run/docker.sock emilevauge/traefik
 $ ab -n 20000 -c 20  -r http://test1.docker.localhost/
 This is ApacheBench, Version 2.3 <$Revision: 1528965 $>
